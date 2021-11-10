@@ -49,6 +49,7 @@ class ABConfig():
         self.HTTP_PROXY_LIST = []
         self.HTTP_PROXY_LIST_COMPLETE = []
         self.GOOGLE_API_KEY = None
+        self.MAPBOX_API_KEY = None
 
         try:
             config = configparser.ConfigParser()
@@ -159,6 +160,13 @@ class ABConfig():
             except:
                 logger.warning(
                     "Missing config file entry: Google API Key. Needed only for geocoding")
+                logger.warning("For more information, see example.config")
+            
+            try:
+                self.MAPBOX_API_KEY = config["ACCOUNT"]["mapbox_api_key"]
+            except:
+                logger.warning(
+                    "Missing config file entry: Mapbox API Key. Needed only for geocoding")
                 logger.warning("For more information, see example.config")
 
 
